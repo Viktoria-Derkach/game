@@ -1,8 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-// import App from '../examples/ReactIntro/App';
+import { Top } from './components/Top';
+import { Scoreboard } from './components/Scoreboard';
 
-import { Legend } from './components/Top/Legend';
-
-ReactDOM.render(<Legend />, document.getElementById('root'));
+ReactDOM.render(
+  <>
+    <Top feature="Flag" firstAction="ctrl" secondAction="click">
+      Minesweeper
+    </Top>
+    <Scoreboard
+      time="000"
+      levels={['beginner', 'intermediate', 'expert']}
+      mines="010"
+      onReset={() => null}
+    />
+  </>,
+  document.getElementById('root')
+);

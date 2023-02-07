@@ -16,7 +16,8 @@
     "serve": "webpack serve --mode=development",
     "start": "webpack serve --mode=development",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "chromatic": "npx chromatic --project-token=5738f452e2f8"
   },
   "repository": {
     "type": "git",
@@ -26,7 +27,9 @@
     "React",
     "Redux"
   ],
-  "author": "Viktoriia Derkach",
+  "author": {
+    "name": "Viktoriia Derkach"
+  },
   "license": "MIT",
   "devDependencies": {
     "@babel/cli": "^7.19.3",
@@ -90,5 +93,11 @@
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.1"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/nickovchinnikov/minesweeper/issues"
+  },
+  "readme": "ERROR: No README data found!",
+  "homepage": "https://github.com/nickovchinnikov/minesweeper#readme",
+  "_id": "game-minesweper@1.0.0"
 }
