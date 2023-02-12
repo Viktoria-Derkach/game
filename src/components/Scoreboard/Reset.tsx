@@ -13,6 +13,7 @@ export const Reset: FC<ResetProps> = ({ onReset }) => {
 
   const onMouseDown = () => setMouseDown(true);
   const onMouseUp = () => setMouseDown(false);
+  console.log('defd');
 
   return (
     <Button
