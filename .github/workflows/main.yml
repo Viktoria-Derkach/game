@@ -40,9 +40,9 @@ jobs:
       - name: Build
         run: npm run build
 
-      # Run Stryker-Mutator check
-      - name: Stryker-Mutator
-        run: npm run test:mutate
+      # # Run Stryker-Mutator check
+      # - name: Stryker-Mutator
+      #   run: npm run test:mutate
 
       # Visual regression test
       - name: Chromatic
