@@ -17,7 +17,6 @@ ReactDOM.render(
       mines="010"
       onReset={() => null}
     />
-
   </>,
   document.getElementById('root')
 );
