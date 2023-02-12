@@ -7,7 +7,7 @@ describe('Reset button check', () => {
   const ResetWithDummyHandlerOnReset: FC = () => <Reset onReset={() => null} />;
   it('Should render elements with default state', () => {
     render(<ResetWithDummyHandlerOnReset />);
-    screen.debug();
+    // screen.debug();
     expect(screen.getByText('🙂')).toBeInTheDocument();
   });
   it('onReset handler should be called', () => {

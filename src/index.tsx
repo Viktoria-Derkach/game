@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 
 import { Top } from './components/Top';
 import { Scoreboard } from './components/Scoreboard';
+import { Grid } from './components/Grid/Grid';
+import { Cell } from './components/Grid/Cell';
 
 ReactDOM.render(
   <>
@@ -15,6 +17,7 @@ ReactDOM.render(
       mines="010"
       onReset={() => null}
     />
+
   </>,
   document.getElementById('root')
 );

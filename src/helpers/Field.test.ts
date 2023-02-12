@@ -81,6 +81,12 @@ describe('Field generator', () => {
       console.table(field);
       console.table(flatField);
 
+      expect([...field[0], ...field[1]].join('')).not.toBe(
+        '99999999999999999999'
+      );
+
+      expect(flatField.filter(cellWithBombFilter)).toHaveLength(mines);
+
       expect(flatField.filter(cellWithBombFilter)).toHaveLength(25);
     });
   });
