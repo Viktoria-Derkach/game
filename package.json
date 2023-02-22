@@ -17,7 +17,7 @@
     "start": "webpack serve --mode=development",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "chromatic": "npx chromatic",
+    "chromatic": "npx chromatic  --project-token=7ee4bd31a4cf",
     "prepare": "husky install"
   },
   "repository": {

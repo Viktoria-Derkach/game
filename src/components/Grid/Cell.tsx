@@ -1,10 +1,7 @@
 import React, { FC } from 'react';
 import styled from '@emotion/styled';
-
 import { Cell as CellType, Coords, CellState } from '@/helpers/Field';
-
 import { useMouseDown } from '@/hooks/useMouseDown';
-
 export interface CellProps {
   /**
    * Cell status based on the CellType
@@ -29,15 +26,12 @@ export const isActiveCell = (cell: CellType): boolean =>
 
 export const Cell: FC<CellProps> = ({ children, coords, ...rest }) => {
   const [mouseDown, onMouseDown, onMouseUp] = useMouseDown();
-
   const onClick = () => rest.onClick(coords);
-
   const onContextMenu = (event: React.MouseEvent<HTMLDivElement>) => {
     /**
      * Prevent context menu by default
      */
     event.preventDefault();
-
     if (isActiveCell(children)) {
       rest.onContextMenu(coords);
     }
@@ -50,12 +44,12 @@ export const Cell: FC<CellProps> = ({ children, coords, ...rest }) => {
     onMouseUp,
     onMouseLeave: onMouseUp,
     mouseDown,
-    'data-testid': `${children}_${coords}`,
+    'data-testid': `${coords}`,
+    role: 'cell',
   };
 
   return <ComponentsMap {...props}>{children}</ComponentsMap>;
 };
-
 interface ComponentsMapProps {
   children: CellType;
   onClick: (event: React.MouseEvent<HTMLDivElement>) => void;
@@ -65,46 +59,46 @@ interface ComponentsMapProps {
   onMouseLeave: () => void;
   mouseDown: boolean;
   'data-testid'?: string;
+  role: string;
 }
 
 const ComponentsMap: FC<ComponentsMapProps> = ({ children, ...rest }) => {
   const nonActiveCellProps = {
     onContextMenu: rest.onContextMenu,
     'data-testid': rest['data-testid'],
+    role: rest.role,
   };
 
   switch (children) {
-    case CellState.empty:
-      return <RevealedFrame {...nonActiveCellProps} />;
     case CellState.bomb:
       return (
         <BombFrame {...nonActiveCellProps}>
-          <Bomb />
+          <Bomb data-testid={`bomb_${rest['data-testid']}`} />
         </BombFrame>
       );
     case CellState.hidden:
-      return <ClosedFrame {...rest} />;
+      return <ClosedFrame {...rest}>{children}</ClosedFrame>;
     case CellState.flag:
       return (
         <ClosedFrame {...rest}>
           <Flag />
+          <Flag data-testid={`flag_${rest['data-testid']}`}>{children}</Flag>
         </ClosedFrame>
       );
     case CellState.weakFlag:
       return (
         <ClosedFrame {...rest}>
           <WeakFlag />
+          <WeakFlag data-testid={`weakFlag_${rest['data-testid']}`} />
         </ClosedFrame>
       );
     default:
       return <RevealedFrame {...nonActiveCellProps}>{children}</RevealedFrame>;
   }
 };
-
 interface ClosedFrameProps {
   mouseDown?: boolean;
 }
-
 export const ClosedFrame = styled.div<ClosedFrameProps>`
   display: flex;
   align-items: center;
@@ -113,6 +107,7 @@ export const ClosedFrame = styled.div<ClosedFrameProps>`
   cursor: pointer;
   width: 1.8vw;
   height: 1.8vw;
+  color: transparent;
   background-color: #d1d1d1;
   border: 0.6vh solid transparent;
   border-color: ${({ mouseDown = false }) =>
@@ -124,7 +119,7 @@ export const ClosedFrame = styled.div<ClosedFrameProps>`
 
 const transparent = 'rgba(0,0,0,0)';
 const colors: { [key in CellType]: string } = {
-  0: '#000',
+  0: transparent,
   1: '#2a48ec',
   2: '#2bb13d',
   3: '#ec6561',
@@ -162,11 +157,11 @@ const BombFrame = styled(RevealedFrame)`
 const Flag = styled.div`
   width: 0px;
   height: 0px;
+  color: ${transparent};
   border-top: 0.5vw solid transparent;
   border-bottom: 0.5vw solid transparent;
   border-left: 0.5vw solid #ec433c;
 `;
-
 const WeakFlag = styled(Flag)`
   border-left: 0.5vw solid #f19996;
 `;

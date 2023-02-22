@@ -20,17 +20,21 @@ export interface GridProps {
   onContextMenu: (coords: Coords) => void;
 }
 
-export const Grid: FC<GridProps> = ({ children, ...rest }) => (
-  <Wrapper size={children.length}>
-    {children.map((row, y) =>
-      row.map((cell, x) => (
-        <Cell key={`${y}_${x}_${cell}`} coords={[y, x]} {...rest}>
-          {cell}
-        </Cell>
-      ))
-    )}
-  </Wrapper>
-);
+export const Grid: FC<GridProps> = ({ children, ...rest }) => {
+  console.log(children);
+
+  return (
+    <Wrapper size={children?.length} role="grid">
+      {children?.map((row, y) =>
+        row.map((cell, x) => (
+          <Cell key={`${y}_${x}_${cell}`} coords={[y, x]} {...rest}>
+            {cell}
+          </Cell>
+        ))
+      )}
+    </Wrapper>
+  );
+};
 
 interface WrapperProps {
   size: number;

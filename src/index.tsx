@@ -1,22 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Top } from './components/Top';
-import { Scoreboard } from './components/Scoreboard';
-import { Grid } from './components/Grid/Grid';
-import { Cell } from './components/Grid/Cell';
+import { GameWithHooks } from './modules/GameWithHooks';
 
-ReactDOM.render(
-  <>
-    <Top feature="Flag" firstAction="ctrl" secondAction="click">
-      Minesweeper
-    </Top>
-    <Scoreboard
-      time="000"
-      levels={['beginner', 'intermediate', 'expert']}
-      mines="010"
-      onReset={() => null}
-    />
-  </>,
-  document.getElementById('root')
-);
+ReactDOM.render(<GameWithHooks />, document.getElementById('root'));
