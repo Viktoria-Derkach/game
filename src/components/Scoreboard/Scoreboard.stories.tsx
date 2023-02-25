@@ -15,5 +15,5 @@ ScoreboardExample.args = {
   time: '000',
   levels: ['beginner', 'intermediate', 'expert'],
   defaultLevel: 'intermediate',
-  mines: '010',
+  bombs: '010',
 };
