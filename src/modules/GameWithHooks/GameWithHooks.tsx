@@ -14,6 +14,7 @@ export const GameWithHooks: FC = () => {
     settings,
     playerField,
     onClick,
+    onContextMenu,
     onChangeLevel,
     onReset,
   } = useGame();
@@ -39,7 +40,7 @@ export const GameWithHooks: FC = () => {
           onReset={onReset}
         />
         {isGameOver && <GameOver onClick={onReset} isWin={isWin} />}
-        <Grid onClick={onClick} onContextMenu={() => null}>
+        <Grid onClick={onClick} onContextMenu={onContextMenu}>
           {playerField}
         </Grid>
       </GameArea>
