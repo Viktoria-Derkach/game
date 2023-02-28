@@ -17,6 +17,7 @@ export const GameWithHooks: FC = () => {
     onContextMenu,
     onChangeLevel,
     onReset,
+    time,
   } = useGame();
 
   const [, bombs] = settings;
@@ -28,7 +29,7 @@ export const GameWithHooks: FC = () => {
       </Top>
       <GameArea>
         <Scoreboard
-          time="0"
+          time={String(time)}
           bombs={String(bombs)}
           levels={GameLevels as unknown as string[]}
           defaultLevel={level}
