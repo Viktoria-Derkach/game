@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 import {
   Field,
@@ -16,10 +16,12 @@ interface ReturnType {
   level: LevelNames;
   time: number;
   isGameOver: boolean;
+  isGameStarted: boolean;
   isWin: boolean;
   settings: [number, number];
   playerField: Field;
   gameField: Field;
+  flagCounter: number;
   onClick: (coords: Coords) => void;
   onContextMenu: (coords: Coords) => void;
   onChangeLevel: (level: LevelNames) => void;
@@ -34,6 +36,7 @@ export const useGame = (): ReturnType => {
   const [isGameStarted, setIsGameStarted] = useState(false);
 
   const [time, setTime] = useState(0);
+  const [flagCounter, setFlagCounter] = useState(0);
 
   const setGameOver = (isSolved = false) => {
     setIsGameOver(true);
@@ -68,12 +71,10 @@ export const useGame = (): ReturnType => {
     };
   }, [isGameOver, isGameStarted, time]);
 
-  useMemo(() => console.log(gameField), []);
-
   const onClick = (coords: Coords) => {
     !isGameStarted && setIsGameStarted(true);
     try {
-      const [newPlayerField, isSolved, flagCounter] = openCell(
+      const [newPlayerField, isSolved] = openCell(
         coords,
         playerField,
         gameField
@@ -84,17 +85,20 @@ export const useGame = (): ReturnType => {
       setPlayerField([...newPlayerField]);
     } catch (e) {
       setPlayerField([...gameField]);
-      setGameOver(false);
+      setGameOver();
     }
   };
 
   const onContextMenu = (coords: Coords) => {
     !isGameStarted && setIsGameStarted(true);
-    const [newPlayerField, isSolved, flagCounter] = setFlag(
+    const [newPlayerField, isSolved, newFlagCounter] = setFlag(
       coords,
       playerField,
-      gameField
+      gameField,
+      flagCounter,
+      bombs
     );
+    setFlagCounter(newFlagCounter);
     if (isSolved) {
       setGameOver(isSolved);
     }
@@ -114,6 +118,7 @@ export const useGame = (): ReturnType => {
     setIsWin(false);
     setIsGameStarted(false);
     setTime(0);
+    setFlagCounter(0);
   };
 
   const onChangeLevel = (level: LevelNames) => {
@@ -128,10 +133,12 @@ export const useGame = (): ReturnType => {
     level,
     time,
     isGameOver,
+    isGameStarted,
     isWin,
     settings: [size, bombs],
     playerField,
     gameField,
+    flagCounter,
     onClick,
     onContextMenu,
     onChangeLevel,
