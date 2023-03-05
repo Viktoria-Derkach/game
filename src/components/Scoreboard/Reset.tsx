@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, memo } from 'react';
 import styled from '@emotion/styled';
 
 export interface ResetProps {
@@ -8,7 +8,7 @@ export interface ResetProps {
   onReset: () => void;
 }
 
-export const Reset: FC<ResetProps> = ({ onReset }) => {
+export const Reset: FC<ResetProps> = memo(({ onReset }) => {
   const [mouseDown, setMouseDown] = useState(false);
 
   const onMouseDown = () => setMouseDown(true);
@@ -25,7 +25,9 @@ export const Reset: FC<ResetProps> = ({ onReset }) => {
       {mouseDown ? '😯' : '🙂'}
     </Button>
   );
-};
+});
+
+Reset.displayName = 'Reset';
 
 const Button = styled.button`
   font-size: 1.5vw;

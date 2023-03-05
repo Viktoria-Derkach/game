@@ -24,6 +24,7 @@ module.exports = {
   rules: {
     'prettier/prettier': ['error', { singleQuote: true }],
     '@typescript-eslint/no-var-requires': 'warn',
+    'react/prop-types': 0,
   },
   settings: {
     react: {
