@@ -2,7 +2,7 @@ import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { render, screen } from '@testing-library/react';
 
-import { CellState } from '@/helpers/Field';
+import { CellState } from '@/core/Field';
 
 import { GameWithHooks } from './GameWithHooks';
 
