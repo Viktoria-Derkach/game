@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { App } from './App';
 
-import { GameWithHooks } from './modules/GameWithHooks';
-
-ReactDOM.render(<GameWithHooks />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
