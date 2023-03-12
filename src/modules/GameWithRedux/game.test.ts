@@ -69,9 +69,9 @@ describe('Game reducer', () => {
   });
   describe('Check action setFlag', () => {
     it('Check setFlag', () => {
-      const flagState = reducer(baseInitialState, actions.setFlag([1, 1]));
+      const state1 = reducer(baseInitialState, actions.setFlag([1, 1]));
 
-      expect(flagState).toEqual({
+      expect(state1).toEqual({
         ...baseInitialState,
         isGameStarted: true,
         flagCounter: 1,
@@ -81,9 +81,9 @@ describe('Game reducer', () => {
         ],
       });
 
-      const weakFlagState = reducer(flagState, actions.setFlag([1, 1]));
+      const state2 = reducer(state1, actions.setFlag([1, 1]));
 
-      expect(weakFlagState).toEqual({
+      expect(state2).toEqual({
         ...baseInitialState,
         isGameStarted: true,
         flagCounter: 1,
@@ -93,7 +93,7 @@ describe('Game reducer', () => {
         ],
       });
 
-      expect(reducer(weakFlagState, actions.setFlag([1, 1]))).toEqual({
+      expect(reducer(state2, actions.setFlag([1, 1]))).toEqual({
         ...baseInitialState,
         isGameStarted: true,
       });
@@ -101,7 +101,7 @@ describe('Game reducer', () => {
   });
 
   describe('Win flow', () => {
-    it('Setup flag on the last stage', () => {
+    it('Setup flag on the last step', () => {
       const state1 = reducer(baseInitialState, actions.openCell([1, 0]));
       const state2 = reducer(state1, actions.openCell([0, 1]));
       const state3 = reducer(state2, actions.openCell([1, 1]));
@@ -119,7 +119,7 @@ describe('Game reducer', () => {
         ],
       });
     });
-    it('Open cell on the last stage', () => {
+    it('Open cell on the last step', () => {
       const state1 = reducer(baseInitialState, actions.setFlag([0, 0]));
       const state2 = reducer(state1, actions.openCell([1, 0]));
       const state3 = reducer(state2, actions.openCell([0, 1]));
