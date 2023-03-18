@@ -3134,6 +3134,11 @@ exports[`GameWithHooks test cases Game over reset the game state 1`] = `
     </div>
   </div>
   <div
+    class="css-1p4hvro"
+  >
+    🙁
+  </div>
+  <div
     class="css-1ye5yxo"
     role="grid"
     size="9"
@@ -3188,18 +3193,21 @@ exports[`GameWithHooks test cases Game over reset the game state 1`] = `
       1
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-9g680z"
       data-testid="0,7"
       role="cell"
     >
-      10
+      <div
+        class="css-3tubcw"
+        data-testid="bomb_0,7"
+      />
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-rautmg"
       data-testid="0,8"
       role="cell"
     >
-      10
+      1
     </div>
     <div
       class="css-181gde3"
@@ -3251,18 +3259,18 @@ exports[`GameWithHooks test cases Game over reset the game state 1`] = `
       2
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-1bgv23n"
       data-testid="1,7"
       role="cell"
     >
-      10
+      2
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-1bgv23n"
       data-testid="1,8"
       role="cell"
     >
-      10
+      2
     </div>
     <div
       class="css-181gde3"
@@ -3300,32 +3308,38 @@ exports[`GameWithHooks test cases Game over reset the game state 1`] = `
       1
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-9g680z"
       data-testid="2,5"
       role="cell"
     >
-      10
+      <div
+        class="css-3tubcw"
+        data-testid="bomb_2,5"
+      />
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-rautmg"
       data-testid="2,6"
       role="cell"
     >
-      10
+      1
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-rautmg"
       data-testid="2,7"
       role="cell"
     >
-      10
+      1
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-9g680z"
       data-testid="2,8"
       role="cell"
     >
-      10
+      <div
+        class="css-3tubcw"
+        data-testid="bomb_2,8"
+      />
     </div>
     <div
       class="css-181gde3"
@@ -3363,32 +3377,32 @@ exports[`GameWithHooks test cases Game over reset the game state 1`] = `
       3
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-1bgv23n"
       data-testid="3,5"
       role="cell"
     >
-      10
+      2
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-1bgv23n"
       data-testid="3,6"
       role="cell"
     >
-      10
+      2
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-rautmg"
       data-testid="3,7"
       role="cell"
     >
-      10
+      1
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-rautmg"
       data-testid="3,8"
       role="cell"
     >
-      10
+      1
     </div>
     <div
       class="css-181gde3"
@@ -3412,46 +3426,52 @@ exports[`GameWithHooks test cases Game over reset the game state 1`] = `
       1
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-9g680z"
       data-testid="4,3"
       role="cell"
     >
-      10
+      <div
+        class="css-3tubcw"
+        data-testid="bomb_4,3"
+      />
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-1bgv23n"
       data-testid="4,4"
       role="cell"
     >
-      10
+      2
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-9g680z"
       data-testid="4,5"
       role="cell"
     >
-      10
+      <div
+        class="css-3tubcw"
+        data-testid="bomb_4,5"
+      />
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-rautmg"
       data-testid="4,6"
       role="cell"
     >
-      10
+      1
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-181gde3"
       data-testid="4,7"
       role="cell"
     >
-      10
+      0
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-181gde3"
       data-testid="4,8"
       role="cell"
     >
-      10
+      0
     </div>
     <div
       class="css-rautmg"
@@ -3475,235 +3495,250 @@ exports[`GameWithHooks test cases Game over reset the game state 1`] = `
       2
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-rautmg"
       data-testid="5,3"
       role="cell"
     >
-      10
+      1
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-1bgv23n"
       data-testid="5,4"
       role="cell"
     >
-      10
+      2
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-rautmg"
       data-testid="5,5"
       role="cell"
     >
-      10
+      1
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-rautmg"
       data-testid="5,6"
       role="cell"
     >
-      10
+      1
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-rautmg"
       data-testid="5,7"
       role="cell"
     >
-      10
+      1
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-rautmg"
       data-testid="5,8"
       role="cell"
     >
-      10
+      1
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-rautmg"
       data-testid="6,0"
       role="cell"
     >
-      10
+      1
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-9g680z"
       data-testid="6,1"
       role="cell"
     >
-      10
+      <div
+        class="css-3tubcw"
+        data-testid="bomb_6,1"
+      />
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-rautmg"
       data-testid="6,2"
       role="cell"
     >
-      10
+      1
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-181gde3"
       data-testid="6,3"
       role="cell"
     >
-      10
+      0
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-181gde3"
       data-testid="6,4"
       role="cell"
     >
-      10
+      0
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-181gde3"
       data-testid="6,5"
       role="cell"
     >
-      10
+      0
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-181gde3"
       data-testid="6,6"
       role="cell"
     >
-      10
+      0
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-rautmg"
       data-testid="6,7"
       role="cell"
     >
-      10
+      1
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-9g680z"
       data-testid="6,8"
       role="cell"
     >
-      10
+      <div
+        class="css-3tubcw"
+        data-testid="bomb_6,8"
+      />
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-rautmg"
       data-testid="7,0"
       role="cell"
     >
-      10
+      1
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-rautmg"
       data-testid="7,1"
       role="cell"
     >
-      10
+      1
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-rautmg"
       data-testid="7,2"
       role="cell"
     >
-      10
+      1
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-rautmg"
       data-testid="7,3"
       role="cell"
     >
-      10
+      1
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-rautmg"
       data-testid="7,4"
       role="cell"
     >
-      10
+      1
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-1bgv23n"
       data-testid="7,5"
       role="cell"
     >
-      10
+      2
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-rautmg"
       data-testid="7,6"
       role="cell"
     >
-      10
+      1
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-1a0mj5a"
       data-testid="7,7"
       role="cell"
     >
-      10
+      3
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-1bgv23n"
       data-testid="7,8"
       role="cell"
     >
-      10
+      2
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-181gde3"
       data-testid="8,0"
       role="cell"
     >
-      10
+      0
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-181gde3"
       data-testid="8,1"
       role="cell"
     >
-      10
+      0
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-181gde3"
       data-testid="8,2"
       role="cell"
     >
-      10
+      0
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-rautmg"
       data-testid="8,3"
       role="cell"
     >
-      10
+      1
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-9g680z"
       data-testid="8,4"
       role="cell"
     >
-      10
+      <div
+        class="css-3tubcw"
+        data-testid="bomb_8,4"
+      />
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-1bgv23n"
       data-testid="8,5"
       role="cell"
     >
-      10
+      2
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-9g680z"
       data-testid="8,6"
       role="cell"
     >
-      10
+      <div
+        class="css-3tubcw"
+        data-testid="bomb_8,6"
+      />
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-1bgv23n"
       data-testid="8,7"
       role="cell"
     >
-      10
+      2
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-9g680z"
       data-testid="8,8"
       role="cell"
     >
-      10
+      <div
+        class="css-3tubcw"
+        data-testid="bomb_8,8"
+      />
     </div>
   </div>
 </DocumentFragment>

@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { store } from '@/store';
 
-import { Scoreboard } from './Scoreboard';
+import { GameOver } from './GameOver';
 jest.mock('react-redux', () => ({
   __esModule: true,
   ...jest.requireActual('react-redux'),
@@ -14,29 +14,47 @@ jest.mock('react-redux', () => ({
   useDispatch: jest.fn(),
 }));
 
-describe('Scoreboard test cases', () => {
-  it('Scoreboard check', () => {
+describe('GameOver test cases', () => {
+  it('GameOver with loose check', () => {
     const mockDispatch = jest.fn();
+
     (useDispatch as jest.Mock).mockReturnValue(mockDispatch);
     (useSelector as jest.Mock).mockReturnValue({
-      level: 'beginner',
-      time: 0,
-      bombs: 10,
-      flagCounter: 3,
+      isGameOver: true,
+      isWin: false,
     });
 
     const { asFragment } = render(
       <Provider store={store}>
-        <Scoreboard />
+        <GameOver />
       </Provider>
     );
 
     expect(asFragment()).toMatchSnapshot();
 
-    userEvent.selectOptions(screen.getByRole('combobox'), 'intermediate');
+    userEvent.click(screen.getByText('🙁'));
+
+    expect(mockDispatch).toHaveBeenCalled();
+  });
+  it('GameOver with win check', () => {
+    const mockDispatch = jest.fn();
+
+    (useDispatch as jest.Mock).mockReturnValue(mockDispatch);
+    (useSelector as jest.Mock).mockReturnValue({
+      isGameOver: true,
+      isWin: true,
+    });
+
+    const { asFragment } = render(
+      <Provider store={store}>
+        <GameOver />
+      </Provider>
+    );
+
     expect(asFragment()).toMatchSnapshot();
 
-    userEvent.click(screen.getByRole('button'));
-    expect(mockDispatch).toHaveBeenCalledTimes(2);
+    userEvent.click(screen.getByText('😎'));
+
+    expect(mockDispatch).toHaveBeenCalled();
   });
 });

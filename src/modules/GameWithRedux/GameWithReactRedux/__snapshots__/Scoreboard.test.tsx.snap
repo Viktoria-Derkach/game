@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Scoreboard renders correctly 1`] = `
+exports[`Scoreboard test cases Scoreboard check 1`] = `
 <DocumentFragment>
   <div
     class="css-1gexv9m"
@@ -40,7 +40,53 @@ exports[`Scoreboard renders correctly 1`] = `
     <div
       class="css-d2q1pa"
     >
-      10
+      7
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Scoreboard test cases Scoreboard check 2`] = `
+<DocumentFragment>
+  <div
+    class="css-1gexv9m"
+  >
+    <div
+      class="css-d2q1pa"
+    >
+      0
+    </div>
+    <select
+      class="css-55qvia"
+    >
+      <option
+        class="css-zcmdxr"
+        value="beginner"
+      >
+        beginner
+      </option>
+      <option
+        class="css-zcmdxr"
+        value="intermediate"
+      >
+        intermediate
+      </option>
+      <option
+        class="css-zcmdxr"
+        value="expert"
+      >
+        expert
+      </option>
+    </select>
+    <button
+      class="css-1bva717"
+    >
+      🙂
+    </button>
+    <div
+      class="css-d2q1pa"
+    >
+      7
     </div>
   </div>
 </DocumentFragment>
