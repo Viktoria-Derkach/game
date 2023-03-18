@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Top renders correctly 1`] = `
+exports[`MinesweeperWithUseReducer renders correctly 1`] = `
 <DocumentFragment>
   <div
     class="css-1ct4owg"
