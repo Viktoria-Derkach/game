@@ -49,7 +49,7 @@ export const getInitialState = (level: LevelNames = 'beginner'): State => {
   };
 };
 
-export const { reducer, actions } = createSlice({
+export const gameSlice = createSlice({
   name: 'game',
   initialState: getInitialState(),
   reducers: {
@@ -101,6 +101,8 @@ export const { reducer, actions } = createSlice({
       getInitialState(payload),
   },
 });
+
+export const { actions, reducer } = gameSlice;
 
 export const recursiveUpdate =
   (prevGameField: Field): ThunkAction<void, RootState, unknown, AnyAction> =>

@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Switch test cases Switch render check 1`] = `
+<DocumentFragment>
+  <div>
+    <label
+      class="css-jm2r67"
+    >
+      Change: 
+    </label>
+    <select
+      class="css-1q4l6vq"
+    >
+      <option>
+        option1
+      </option>
+      <option>
+        option2
+      </option>
+      <option>
+        option3
+      </option>
+    </select>
+  </div>
+</DocumentFragment>
+`;
