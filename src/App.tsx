@@ -1,20 +1,20 @@
 import React, { FC, Suspense } from 'react';
 
-import { Provider } from 'react-redux';
 import {
-  BrowserRouter as Router,
-  Switch,
+  BrowserRouter,
+  Routes,
   Route,
   Link,
-  Redirect,
+  Navigate,
+  useSearchParams,
 } from 'react-router-dom';
 
 import { Location } from 'history';
+import { Provider } from 'react-redux';
 
-import { useQuery } from '@/hooks/useQuery';
 export const Navigation: FC = () => {
-  const query = useQuery();
-  const level = query.get('level') || '';
+  const [searchParams] = useSearchParams();
+  const level = searchParams.get('level') || '';
 
   const getLocationObjWithSearchParams = (
     pathname: string
@@ -35,18 +35,27 @@ export const Navigation: FC = () => {
           <Link to={getLocationObjWithSearchParams('/')}>Home</Link>
         </li>
         <li>
-          <Link to={getLocationObjWithSearchParams('/game-with-hooks')}>
+          <Link to={getLocationObjWithSearchParams('/minesweeper/hooks')}>
             Game With Hooks
           </Link>
         </li>
         <li>
-          <Link to={getLocationObjWithSearchParams('/game-with-usereducer')}>
+          <Link to={getLocationObjWithSearchParams('/minesweeper/usereducer')}>
             Game With useReducer
           </Link>
         </li>
         <li>
-          <Link to={getLocationObjWithSearchParams('/game-with-reactredux')}>
+          <Link to={getLocationObjWithSearchParams('/minesweeper/reactredux')}>
             Game With ReactRedux
+          </Link>
+        </li>
+        <li>
+          <Link
+            to={getLocationObjWithSearchParams(
+              '/minesweeper/cellular-automation'
+            )}
+          >
+            Game With cellular-automation
           </Link>
         </li>
       </ul>
@@ -85,42 +94,65 @@ const CellularAutomation = React.lazy(() =>
 );
 
 import { store } from '@/store';
-export const App: FC = () => (
-  <Provider store={store}>
-    <Router>
-      <Navigation />
-      <Switch>
-        <Route path="/game-with-hooks/:username?">
+export const Routing: FC = () => (
+  <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/minesweeper">
+      <Route
+        path="hooks"
+        element={
           <Suspense fallback={<div>Loading minesweeper with hooks...</div>}>
             <MinesweeperWithHooks />
           </Suspense>
-        </Route>
-        <Route path="/game-with-usereducer">
+        }
+      >
+        <Route
+          path=":username"
+          element={
+            <Suspense fallback={<div>Loading minesweeper with hooks...</div>}>
+              <MinesweeperWithHooks />
+            </Suspense>
+          }
+        />
+      </Route>
+      <Route
+        path="usereducer"
+        element={
           <Suspense
             fallback={<div>Loading minesweeper with useReducer...</div>}
           >
             <MinesweeperWithUseReducer />
           </Suspense>
-        </Route>
-        <Route path="/game-with-reactredux">
+        }
+      />
+      <Route
+        path="reactredux"
+        element={
           <Suspense
             fallback={<div>Loading minesweeper with ReactRedux...</div>}
           >
             <MinesweeperWithReactRedux />
           </Suspense>
-        </Route>
-        <Route path="/cellular-automation">
+        }
+      />
+      <Route
+        path="cellular-automation"
+        element={
           <Suspense fallback={<div>Loading Cellular Automation...</div>}>
             <CellularAutomation />
           </Suspense>
-        </Route>
-        <Route path="/">
-          <Home />
-        </Route>
-        <Route path="*">
-          <Redirect to="/" />
-        </Route>
-      </Switch>
-    </Router>
+        }
+      />
+    </Route>
+    <Route path="*" element={<Navigate to="/" />} />
+  </Routes>
+);
+
+export const App: FC = () => (
+  <Provider store={store}>
+    <BrowserRouter>
+      <Navigation />
+      <Routing />
+    </BrowserRouter>
   </Provider>
 );

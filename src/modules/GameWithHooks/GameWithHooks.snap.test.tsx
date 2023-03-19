@@ -1,13 +1,19 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { render, screen } from '@testing-library/react';
-
+import { useSearchParams } from 'react-router-dom';
 import { GameWithHooks } from './GameWithHooks';
 
-jest.mock('@/hooks/useQuery', () => ({
-  __esModule: true,
-  useQuery: () => ({ get: () => null }),
+const mockSetSearchParams = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+  useSearchParams: jest.fn(),
 }));
+
+(useSearchParams as jest.Mock).mockReturnValue([
+  { get: () => null },
+  mockSetSearchParams,
+]);
 
 it('Render game field by default', () => {
   const { asFragment } = render(<GameWithHooks />);

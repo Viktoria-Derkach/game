@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSearchParams } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
 import { render, screen } from '@testing-library/react';
 
@@ -6,26 +7,22 @@ import { CellState } from '@/core/Field';
 
 import { GameWithHooks } from './GameWithHooks';
 
-import { useQuery } from '@/hooks/useQuery';
+
 
 const mockOnClick = jest.fn();
 const mockOnChangeLevel = jest.fn();
 const mockOnReset = jest.fn();
 const mockOnContextMenu = jest.fn();
-const mockHistoryPush = jest.fn();
+const mockSetSearchParams = jest.fn();
 
 jest.mock('react-router-dom', () => ({
-  useHistory: () => ({
-    push: mockHistoryPush,
-  }),
+  useSearchParams: jest.fn(),
 }));
 
-jest.mock('@/hooks/useQuery', () => ({
-  __esModule: true,
-  useQuery: jest.fn(),
-}));
-
-(useQuery as jest.Mock).mockReturnValue({ get: () => null });
+(useSearchParams as jest.Mock).mockReturnValue([
+  { get: () => null },
+  mockSetSearchParams,
+]);
 
 jest.mock('./useGame', () => ({
   __esModule: true,
@@ -74,12 +71,12 @@ describe('GameWithHooks test cases', () => {
   it('Change level works fine', () => {
     render(<GameWithHooks />);
     userEvent.selectOptions(screen.getByRole('combobox'), 'intermediate');
-    expect(mockHistoryPush).toHaveBeenCalledWith({
-      search: `?${new URLSearchParams({ level: 'intermediate' }).toString()}`,
-    });
+    expect(mockSetSearchParams).toHaveBeenCalledWith({ level: 'intermediate' });
   });
   it('Level in search params works fine', () => {
-    (useQuery as jest.Mock).mockReturnValue({ get: () => 'intermediate' });
+    (useSearchParams as jest.Mock).mockReturnValue([
+      { get: () => 'intermediate' },
+    ]);
     render(<GameWithHooks />);
     const intermediateOption = screen.queryByText('intermediate');
     expect(intermediateOption).toBeInTheDocument();

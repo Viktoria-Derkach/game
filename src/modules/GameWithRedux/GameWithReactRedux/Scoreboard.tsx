@@ -1,20 +1,19 @@
 import React, { FC, useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 import { GameLevels, LevelNames } from '@/modules/GameSettings';
 import { RootState } from '@/store';
 import { Scoreboard as ScoreboardComponent } from '@/components/Scoreboard';
 import { actions } from '@/modules/GameWithRedux';
-import { useQuery } from '@/hooks/useQuery';
 
 export const Scoreboard: FC = () => {
-  const query = useQuery();
-  const history = useHistory();
+  const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const urlLevelParam = (query.get('level') || undefined) as LevelNames;
+    const urlLevelParam = (searchParams.get('level') ||
+      undefined) as LevelNames;
     if (urlLevelParam) {
       dispatch(actions.changeLevel(urlLevelParam as LevelNames));
     }
@@ -30,9 +29,7 @@ export const Scoreboard: FC = () => {
 
   const onChangeLevel = useCallback(
     ({ target: { value: level } }: React.ChangeEvent<HTMLSelectElement>) => {
-      history.push({
-        search: `?${new URLSearchParams({ level }).toString()}`,
-      });
+      setSearchParams({ level });
       dispatch(actions.changeLevel(level as LevelNames));
     },
     // Stryker disable next-line ArrayDeclaration

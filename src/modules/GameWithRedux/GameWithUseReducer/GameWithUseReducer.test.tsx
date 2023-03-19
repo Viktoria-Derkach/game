@@ -1,27 +1,22 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { render, screen } from '@testing-library/react';
+import { useSearchParams } from 'react-router-dom';
 
 import { GameWithUseReducer } from './GameWithUseReducer';
 
-import { useQuery } from '@/hooks/useQuery';
-
 jest.mock('@/core/Field');
 
-const mockHistoryPush = jest.fn();
+const mockSetSearchParams = jest.fn();
 
 jest.mock('react-router-dom', () => ({
-  useHistory: () => ({
-    push: mockHistoryPush,
-  }),
+  useSearchParams: jest.fn(),
 }));
 
-jest.mock('@/hooks/useQuery', () => ({
-  __esModule: true,
-  useQuery: jest.fn(),
-}));
-
-(useQuery as jest.Mock).mockReturnValue({ get: () => 'beginner' });
+(useSearchParams as jest.Mock).mockReturnValue([
+  { get: () => null },
+  mockSetSearchParams,
+]);
 
 beforeEach(() => {
   jest.clearAllMocks();
@@ -52,9 +47,7 @@ describe('GameWithHooks test cases', () => {
   it('Change level works fine', () => {
     const { asFragment } = render(<GameWithUseReducer />);
     userEvent.selectOptions(screen.getByRole('combobox'), 'intermediate');
-    expect(mockHistoryPush).toHaveBeenCalledWith({
-      search: `?${new URLSearchParams({ level: 'intermediate' }).toString()}`,
-    });
+    expect(mockSetSearchParams).toHaveBeenCalledWith({ level: 'intermediate' });
     expect(asFragment()).toMatchSnapshot();
   });
   it('Game over reset the game state', () => {

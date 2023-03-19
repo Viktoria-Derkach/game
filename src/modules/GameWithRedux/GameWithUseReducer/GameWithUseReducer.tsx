@@ -7,8 +7,7 @@ import { GameLevels, LevelNames } from '@/modules/GameSettings';
 import { Scoreboard } from '@/components/Scoreboard';
 import { Grid } from '@/components/Grid';
 import { GameOver } from '@/components/Game';
-import { useHistory } from 'react-router-dom';
-import { useQuery } from '@/hooks/useQuery';
+import { useSearchParams } from 'react-router-dom';
 
 import {
   reducer,
@@ -17,9 +16,8 @@ import {
 } from '@/modules/GameWithRedux/game';
 
 export const GameWithUseReducer: FC = () => {
-  const history = useHistory();
-  const query = useQuery();
-  const urlLevelParam = (query.get('level') || undefined) as LevelNames;
+  const [searchParams, setSearchParams] = useSearchParams();
+  const urlLevelParam = (searchParams.get('level') || undefined) as LevelNames;
 
   const [
     { level, time, isGameOver, isWin, settings, playerField, flagCounter },
@@ -47,9 +45,7 @@ export const GameWithUseReducer: FC = () => {
 
   const onChangeLevel = useCallback(
     ({ target: { value: level } }: React.ChangeEvent<HTMLSelectElement>) => {
-      history.push({
-        search: `?${new URLSearchParams({ level }).toString()}`,
-      });
+      setSearchParams({ level });
       dispatch(actions.changeLevel(level as LevelNames));
     },
     // Stryker disable next-line ArrayDeclaration
