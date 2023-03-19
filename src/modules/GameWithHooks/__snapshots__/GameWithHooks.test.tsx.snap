@@ -8,7 +8,7 @@ exports[`GameWithHooks test cases Render game field by default 1`] = `
     <div
       class="css-d2q1pa"
     >
-      undefined
+      0
     </div>
     <select
       class="css-55qvia"
@@ -40,7 +40,7 @@ exports[`GameWithHooks test cases Render game field by default 1`] = `
     <div
       class="css-d2q1pa"
     >
-      NaN
+      10
     </div>
   </div>
   <div
