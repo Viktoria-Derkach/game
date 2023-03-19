@@ -54,28 +54,28 @@ exports[`GameWithHooks test cases Render game field by default 1`] = `
     size="2"
   >
     <div
-      class="css-1v5gl4b"
+      class="css-1tt7j02"
       data-testid="0,0"
       role="cell"
     >
       10
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-1tt7j02"
       data-testid="0,1"
       role="cell"
     >
       10
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-1tt7j02"
       data-testid="1,0"
       role="cell"
     >
       10
     </div>
     <div
-      class="css-1v5gl4b"
+      class="css-1tt7j02"
       data-testid="1,1"
       role="cell"
     >
